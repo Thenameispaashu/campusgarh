@@ -213,6 +213,32 @@ export const useUploadCollegeLogo = () => {
   });
 };
 
+export const useUploadCollegeCover = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, formData }) => collegeService.uploadCollegeCover(id, formData),
+    onSuccess: (_, { slug }) => {
+      queryClient.invalidateQueries({ queryKey: ['college', slug] });
+      queryClient.invalidateQueries({ queryKey: ['colleges'] });
+      toast.success('Cover image uploaded');
+    },
+    onError: (error) => toast.error(error.response?.data?.message || 'Cover upload failed'),
+  });
+};
+
+export const useUploadCollegeGallery = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, formData }) => collegeService.uploadCollegeGallery(id, formData),
+    onSuccess: (_, { slug }) => {
+      queryClient.invalidateQueries({ queryKey: ['college', slug] });
+      queryClient.invalidateQueries({ queryKey: ['colleges'] });
+      toast.success('Gallery images uploaded');
+    },
+    onError: (error) => toast.error(error.response?.data?.message || 'Gallery upload failed'),
+  });
+};
+
 // ========== CollegeCourse Hooks ==========
 export const useCoursesForCollege = (collegeId) => {
   return useQuery({

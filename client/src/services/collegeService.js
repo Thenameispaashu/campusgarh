@@ -50,4 +50,9 @@ export const collegeService = {
     return api.patch(`/colleges/${id}/gallery`, formData);
   },
 
+  // Used by AdminCollegeForm edit page (accepts pre-built FormData)
+  uploadCollegeLogo: (id, formData) => api.patch(`/colleges/${id}/logo`, formData),
+  uploadCollegeCover: (id, formData) => api.patch(`/colleges/${id}/cover-image`, formData),
+  uploadCollegeGallery: (id, formData) => api.patch(`/colleges/${id}/gallery`, formData),
+
 };
