@@ -40,6 +40,7 @@ const CreateCollege = () => {
   const [coverPreview, setCoverPreview] = useState(null);
   const [logoPreview, setLogoPreview] = useState(null);
   const [galleryPreviews, setGalleryPreviews] = useState([]);
+  const [removing, setRemoving] = useState({});
 
   const [form, setForm] = useState({
     name: '',
@@ -103,10 +104,25 @@ const CreateCollege = () => {
   const [error, setError] = useState('');
 
   const { data: existing } = useQuery({
-  queryKey: ['college-edit', id],
-  queryFn: () => collegeService.getCollegeById(id),
-  enabled: isEditing,
-});
+    queryKey: ['college-edit', id],
+    queryFn: () => collegeService.getCollegeById(id),
+    enabled: isEditing,
+  });
+
+  const ec = existing?.data?.data; // existing college object
+
+  const handleRemoveImage = async (field, value) => {
+    setRemoving(prev => ({ ...prev, [field]: true }));
+    try {
+      const update = field === 'galleryImage'
+        ? { $pull: { galleryImages: value } }
+        : { [field]: null };
+      await collegeService.updateCollege(id, update);
+      queryClient.invalidateQueries({ queryKey: ['college-edit', id] });
+    } finally {
+      setRemoving(prev => ({ ...prev, [field]: false }));
+    }
+  };
 
 useEffect(() => {
   if (!existing) return;
@@ -290,37 +306,53 @@ useEffect(() => {
             {/* Logo Upload */}
             <div className={styles.field}>
               <label>College Logo <span style={{ fontWeight: 400, color: '#888', fontSize: '0.82rem' }}>(square, shown on cards)</span></label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  if (file) { setLogoFile(file); setLogoPreview(URL.createObjectURL(file)); }
-                }}
+              {isEditing && ec?.logoUrl && !logoPreview && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                  <img src={ec.logoUrl} alt="Current logo" style={{ width: 72, height: 72, objectFit: 'contain', border: '1px solid #e0e0e0', borderRadius: 8, background: '#fafafa', padding: 4 }} />
+                  <button type="button" disabled={removing.logoUrl} onClick={() => handleRemoveImage('logoUrl')}
+                    style={{ color: '#dc2626', background: 'none', border: '1px solid #dc2626', borderRadius: 6, padding: '4px 10px', cursor: 'pointer', fontSize: '0.8rem' }}>
+                    {removing.logoUrl ? 'Removing…' : 'Remove'}
+                  </button>
+                </div>
+              )}
+              <input type="file" accept="image/*"
+                onChange={(e) => { const file = e.target.files[0]; if (file) { setLogoFile(file); setLogoPreview(URL.createObjectURL(file)); } }}
               />
               {logoPreview ? (
-                <img src={logoPreview} alt="Logo preview" style={{ marginTop: 8, width: 90, height: 90, borderRadius: 10, objectFit: 'contain', border: '1px solid #e0e0e0', background: '#fafafa', padding: 4 }} />
-              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 8 }}>
+                  <img src={logoPreview} alt="New logo" style={{ width: 90, height: 90, borderRadius: 10, objectFit: 'contain', border: '1px solid #e0e0e0', background: '#fafafa', padding: 4 }} />
+                  <button type="button" onClick={() => { setLogoFile(null); setLogoPreview(null); }}
+                    style={{ color: '#dc2626', background: 'none', border: '1px solid #dc2626', borderRadius: 6, padding: '4px 8px', cursor: 'pointer' }}>✕ Cancel</button>
+                </div>
+              ) : !isEditing || !ec?.logoUrl ? (
                 <div style={{ marginTop: 8, width: 90, height: 90, borderRadius: 10, border: '2px dashed #ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '0.78rem', textAlign: 'center' }}>No logo</div>
-              )}
+              ) : null}
             </div>
 
             {/* Cover Image Upload */}
             <div className={styles.field}>
               <label>Cover / Banner Image <span style={{ fontWeight: 400, color: '#888', fontSize: '0.82rem' }}>(shown as hero background)</span></label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  if (file) { setCoverImageFile(file); setCoverPreview(URL.createObjectURL(file)); }
-                }}
+              {isEditing && ec?.coverImageUrl && !coverPreview && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                  <img src={ec.coverImageUrl} alt="Current cover" style={{ height: 72, width: 160, objectFit: 'cover', border: '1px solid #e0e0e0', borderRadius: 8 }} />
+                  <button type="button" disabled={removing.coverImageUrl} onClick={() => handleRemoveImage('coverImageUrl')}
+                    style={{ color: '#dc2626', background: 'none', border: '1px solid #dc2626', borderRadius: 6, padding: '4px 10px', cursor: 'pointer', fontSize: '0.8rem' }}>
+                    {removing.coverImageUrl ? 'Removing…' : 'Remove'}
+                  </button>
+                </div>
+              )}
+              <input type="file" accept="image/*"
+                onChange={(e) => { const file = e.target.files[0]; if (file) { setCoverImageFile(file); setCoverPreview(URL.createObjectURL(file)); } }}
               />
               {coverPreview ? (
-                <img src={coverPreview} alt="Cover preview" style={{ marginTop: 8, height: 90, width: '100%', borderRadius: 10, objectFit: 'cover' }} />
-              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 8 }}>
+                  <img src={coverPreview} alt="New cover" style={{ height: 90, width: '100%', maxWidth: 300, borderRadius: 10, objectFit: 'cover' }} />
+                  <button type="button" onClick={() => { setCoverImageFile(null); setCoverPreview(null); }}
+                    style={{ color: '#dc2626', background: 'none', border: '1px solid #dc2626', borderRadius: 6, padding: '4px 8px', cursor: 'pointer', whiteSpace: 'nowrap' }}>✕ Cancel</button>
+                </div>
+              ) : !isEditing || !ec?.coverImageUrl ? (
                 <div style={{ marginTop: 8, height: 90, borderRadius: 10, border: '2px dashed #ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '0.78rem' }}>No cover image</div>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
@@ -622,7 +654,37 @@ useEffect(() => {
         <div className={styles.formSection}>
           <h3 className={styles.sectionTitle}>Gallery Images</h3>
           <div className={styles.formGroup} style={{ gridColumn: '1 / -1' }}>
-            <label className={styles.label}>Upload Gallery Images (max 10)</label>
+
+            {/* Existing gallery images (edit mode) */}
+            {isEditing && ec?.galleryImages?.length > 0 && (
+              <div style={{ marginBottom: 12 }}>
+                <p style={{ fontSize: '0.82rem', color: '#666', marginBottom: 6 }}>Current gallery — click × to remove</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {ec.galleryImages.map((url, i) => (
+                    <div key={url} style={{ position: 'relative' }}>
+                      <img src={url} alt={`Gallery ${i + 1}`} style={{ width: 100, height: 80, objectFit: 'cover', borderRadius: 6, display: 'block' }} />
+                      <button
+                        type="button"
+                        disabled={removing[url]}
+                        onClick={() => handleRemoveImage('galleryImage', url)}
+                        style={{
+                          position: 'absolute', top: 3, right: 3,
+                          width: 22, height: 22, borderRadius: '50%',
+                          background: removing[url] ? '#999' : '#dc2626',
+                          color: '#fff', border: 'none', cursor: 'pointer',
+                          fontSize: '0.7rem', lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        }}
+                      >✕</button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* New gallery uploads */}
+            <label className={styles.label}>
+              {isEditing ? 'Add More Gallery Images (max 10)' : 'Upload Gallery Images (max 10)'}
+            </label>
             <input
               type="file"
               accept="image/*"
@@ -637,7 +699,24 @@ useEffect(() => {
             {galleryPreviews.length > 0 && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>
                 {galleryPreviews.map((src, i) => (
-                  <img key={i} src={src} alt={`Gallery ${i + 1}`} style={{ width: 100, height: 80, objectFit: 'cover', borderRadius: 6 }} />
+                  <div key={i} style={{ position: 'relative' }}>
+                    <img src={src} alt={`New ${i + 1}`} style={{ width: 100, height: 80, objectFit: 'cover', borderRadius: 6, display: 'block' }} />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newFiles = galleryFiles.filter((_, fi) => fi !== i);
+                        setGalleryFiles(newFiles);
+                        setGalleryPreviews(newFiles.map(f => URL.createObjectURL(f)));
+                      }}
+                      style={{
+                        position: 'absolute', top: 3, right: 3,
+                        width: 22, height: 22, borderRadius: '50%',
+                        background: '#374151', color: '#fff', border: 'none',
+                        cursor: 'pointer', fontSize: '0.7rem', lineHeight: 1,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      }}
+                    >✕</button>
+                  </div>
                 ))}
               </div>
             )}

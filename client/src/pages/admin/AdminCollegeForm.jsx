@@ -3,7 +3,9 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useQueryClient } from '@tanstack/react-query';
 import { useCollegeBySlug, useCreateCollege, useUpdateCollege, useUploadCollegeLogo, useUploadCollegeCover, useUploadCollegeGallery } from '../../hooks/queries';
+import { collegeService } from '../../services/collegeService';
 import Button from '../../components/common/Button/Button';
 import Loader from '../../components/common/Loader/Loader';
 import styles from './AdminForm.module.css';
@@ -168,9 +170,24 @@ const AdminCollegeForm = () => {
   const collegeData = _collegeRes?.data?.data;
   const createMutation = useCreateCollege();
   const updateMutation = useUpdateCollege();
+  const queryClient = useQueryClient();
   const { mutate: uploadLogo, isPending: uploadingLogo } = useUploadCollegeLogo();
   const { mutate: uploadCover, isPending: uploadingCover } = useUploadCollegeCover();
   const { mutate: uploadGallery, isPending: uploadingGallery } = useUploadCollegeGallery();
+  const [removing, setRemoving] = useState({});
+
+  const handleRemoveImage = async (field, value) => {
+    setRemoving(prev => ({ ...prev, [field + (value || '')]: true }));
+    try {
+      const update = field === 'galleryImage'
+        ? { $pull: { galleryImages: value } }
+        : { [field]: null };
+      await collegeService.updateCollege(collegeData._id, update);
+      queryClient.invalidateQueries({ queryKey: ['college', slug] });
+    } finally {
+      setRemoving(prev => ({ ...prev, [field + (value || '')]: false }));
+    }
+  };
 
   const { register, control, handleSubmit, formState: { errors }, setValue, watch } = useForm({
     resolver: yupResolver(schema),
@@ -330,20 +347,22 @@ const AdminCollegeForm = () => {
 
           {isEditing && collegeData && (
             <>
+              {/* Logo */}
               <div className={styles.field}>
-                <label>Upload Logo Image</label>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                <label>Logo Image</label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
                   {collegeData.logoUrl && (
-                    <img
-                      src={collegeData.logoUrl}
-                      alt="Current logo"
-                      style={{ width: 64, height: 64, objectFit: 'contain', border: '1px solid var(--border)', borderRadius: 8, padding: 4, background: '#fff' }}
-                    />
+                    <>
+                      <img src={collegeData.logoUrl} alt="Current logo"
+                        style={{ width: 64, height: 64, objectFit: 'contain', border: '1px solid var(--border)', borderRadius: 8, padding: 4, background: '#fff' }} />
+                      <button type="button" disabled={removing.logoUrl}
+                        onClick={() => handleRemoveImage('logoUrl')}
+                        style={{ color: '#dc2626', background: 'none', border: '1px solid #dc2626', borderRadius: 6, padding: '4px 10px', cursor: 'pointer', fontSize: '0.8rem' }}>
+                        {removing.logoUrl ? 'Removing…' : '✕ Remove'}
+                      </button>
+                    </>
                   )}
-                  <input
-                    type="file"
-                    accept="image/*"
-                    disabled={uploadingLogo}
+                  <input type="file" accept="image/*" disabled={uploadingLogo}
                     onChange={(e) => {
                       const file = e.target.files[0];
                       if (!file || !collegeData?._id) return;
@@ -351,26 +370,27 @@ const AdminCollegeForm = () => {
                       fd.append('logo', file);
                       uploadLogo({ id: collegeData._id, formData: fd, slug });
                       e.target.value = '';
-                    }}
-                  />
+                    }} />
                   {uploadingLogo && <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Uploading…</span>}
                 </div>
               </div>
 
+              {/* Cover Image */}
               <div className={styles.field}>
                 <label>Cover Image</label>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
                   {collegeData.coverImageUrl && (
-                    <img
-                      src={collegeData.coverImageUrl}
-                      alt="Current cover"
-                      style={{ width: 160, height: 80, objectFit: 'cover', border: '1px solid var(--border)', borderRadius: 8 }}
-                    />
+                    <>
+                      <img src={collegeData.coverImageUrl} alt="Current cover"
+                        style={{ width: 160, height: 80, objectFit: 'cover', border: '1px solid var(--border)', borderRadius: 8 }} />
+                      <button type="button" disabled={removing.coverImageUrl}
+                        onClick={() => handleRemoveImage('coverImageUrl')}
+                        style={{ color: '#dc2626', background: 'none', border: '1px solid #dc2626', borderRadius: 6, padding: '4px 10px', cursor: 'pointer', fontSize: '0.8rem' }}>
+                        {removing.coverImageUrl ? 'Removing…' : '✕ Remove'}
+                      </button>
+                    </>
                   )}
-                  <input
-                    type="file"
-                    accept="image/*"
-                    disabled={uploadingCover}
+                  <input type="file" accept="image/*" disabled={uploadingCover}
                     onChange={(e) => {
                       const file = e.target.files[0];
                       if (!file || !collegeData?._id) return;
@@ -378,32 +398,34 @@ const AdminCollegeForm = () => {
                       fd.append('coverImage', file);
                       uploadCover({ id: collegeData._id, formData: fd, slug });
                       e.target.value = '';
-                    }}
-                  />
+                    }} />
                   {uploadingCover && <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Uploading…</span>}
                 </div>
               </div>
 
+              {/* Gallery Images */}
               <div className={styles.field}>
                 <label>Gallery Images</label>
                 {collegeData.galleryImages?.length > 0 && (
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                    {collegeData.galleryImages.map((url, i) => (
-                      <img
-                        key={i}
-                        src={url}
-                        alt={`Gallery ${i + 1}`}
-                        style={{ width: 100, height: 70, objectFit: 'cover', border: '1px solid var(--border)', borderRadius: 6 }}
-                      />
+                    {collegeData.galleryImages.map((url) => (
+                      <div key={url} style={{ position: 'relative' }}>
+                        <img src={url} alt="Gallery" style={{ width: 100, height: 70, objectFit: 'cover', border: '1px solid var(--border)', borderRadius: 6, display: 'block' }} />
+                        <button type="button" disabled={removing['galleryImage' + url]}
+                          onClick={() => handleRemoveImage('galleryImage', url)}
+                          style={{
+                            position: 'absolute', top: 3, right: 3,
+                            width: 20, height: 20, borderRadius: '50%',
+                            background: removing['galleryImage' + url] ? '#999' : '#dc2626',
+                            color: '#fff', border: 'none', cursor: 'pointer',
+                            fontSize: '0.65rem', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          }}>✕</button>
+                      </div>
                     ))}
                   </div>
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    disabled={uploadingGallery}
+                  <input type="file" accept="image/*" multiple disabled={uploadingGallery}
                     onChange={(e) => {
                       const files = Array.from(e.target.files);
                       if (!files.length || !collegeData?._id) return;
@@ -411,10 +433,9 @@ const AdminCollegeForm = () => {
                       files.forEach(f => fd.append('galleryImages', f));
                       uploadGallery({ id: collegeData._id, formData: fd, slug });
                       e.target.value = '';
-                    }}
-                  />
+                    }} />
                   {uploadingGallery && <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Uploading…</span>}
-                  <small style={{ color: 'var(--muted)', fontSize: '0.75rem' }}>Select multiple images to add to gallery</small>
+                  {!uploadingGallery && <small style={{ color: 'var(--muted)', fontSize: '0.75rem' }}>Select multiple to add more</small>}
                 </div>
               </div>
             </>
