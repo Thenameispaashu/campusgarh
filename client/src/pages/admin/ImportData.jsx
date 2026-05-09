@@ -135,7 +135,7 @@ export default function ImportData() {
 
   return (
     <div className={styles.container}>
-      <Link to="/dashboard" className={styles.backLink}>← Back to Dashboard</Link>
+      <Link to="/dashboard/admin" className={styles.backLink}>← Back to Dashboard</Link>
 
       <div className={styles.header}>
         <h1>Import / Export Data</h1>

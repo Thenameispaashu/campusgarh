@@ -18,9 +18,11 @@ api.interceptors.request.use(
     if (token && !isTokenExpired(token)) {
       config.headers.Authorization = `Bearer ${token}`;
     } else if (token && isTokenExpired(token)) {
-      // Token expired, remove and logout
       removeToken();
       useAuthStore.getState().logout();
+    }
+    if (config.data instanceof FormData) {
+      delete config.headers['Content-Type'];
     }
     return config;
   },
