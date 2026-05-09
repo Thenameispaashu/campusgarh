@@ -167,7 +167,7 @@ class ImportExportService {
     };
   }
 
-  toNum(v)  { return (v !== undefined && v !== '') ? Number(v) : undefined; }
+  toNum(v)  { if (v === undefined || v === '') return undefined; const n = Number(v); return isNaN(n) ? undefined : n; }
   toArr(v)  { return v ? String(v).split(',').map(s => s.trim()).filter(Boolean) : []; }
   toBool(v) { return String(v ?? '').trim().toLowerCase() === 'yes'; }
 
