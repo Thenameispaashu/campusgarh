@@ -18,8 +18,9 @@ const createCollegeValidator = [
   body('name').notEmpty().withMessage('College name is required').trim(),
   body('collegeType').optional().isIn(COLLEGE_TYPES).withMessage('Invalid college type'),
   body('fundingType').optional().isIn(FUNDING_TYPES).withMessage('Invalid funding type'),
-  body('contact.email').optional().isEmail().withMessage('Invalid email'),
-  body('contact.phone').optional().isMobilePhone('any').withMessage('Invalid phone'),
+  body('contact.email').optional({ nullable: true, checkFalsy: true }).isEmail().withMessage('Invalid email'),
+  body('contact.phone').optional({ nullable: true, checkFalsy: true })
+    .matches(/^[\d\s\-+().]{6,20}$/).withMessage('Invalid phone number'),
 ];
 
 const updateCollegeValidator = [
