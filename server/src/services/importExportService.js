@@ -227,6 +227,7 @@ class ImportExportService {
         'Short Name':                  doc.shortName || '',
         'Logo URL':                    doc.logoUrl || '',
         'Cover Image URL':             doc.coverImageUrl || '',
+        'Gallery Image URLs':          (doc.galleryImages || []).join(', '),
         'Description':                 doc.description || '',
         'College Type':                doc.collegeType || '',
         'Institute Type (Funding Type)': doc.fundingType || '',
@@ -386,7 +387,7 @@ class ImportExportService {
     const TEMPLATES = {
       College: {
         headers: [
-          'College Name', 'Short Name', 'Logo URL', 'Cover Image URL', 'Description',
+          'College Name', 'Short Name', 'Logo URL', 'Cover Image URL', 'Gallery Image URLs', 'Description',
           'College Type', 'Institute Type (Funding Type)', 'Affiliation',
           'Established Year',
           'NAAC Grade', 'NIRF Rank', 'NBA Status',
@@ -413,6 +414,7 @@ class ImportExportService {
           'Short Name': 'IIT Delhi',
           'Logo URL': 'https://cdn.example.com/iitd-logo.png',
           'Cover Image URL': 'https://cdn.example.com/iitd-cover.jpg',
+          'Gallery Image URLs': 'https://cdn.example.com/iitd-1.jpg, https://cdn.example.com/iitd-2.jpg',
           'Description': 'Premier engineering institution in India',
           'College Type': 'Engineering & Technology',
           'Institute Type (Funding Type)': 'Institute of National Importance',
@@ -464,6 +466,7 @@ class ImportExportService {
           ['Top Recruiters / Approved By / Other Accreditations / Hostel Facilities / Documents Required', 'Comma-separated values  e.g.  Google, Microsoft, Amazon'],
           ['Logo URL', 'Direct URL to the college logo image  (PNG/JPG/WebP)'],
           ['Cover Image URL', 'Direct URL to the college hero/cover banner image  (PNG/JPG/WebP, recommended 1200×600)'],
+          ['Gallery Image URLs', 'Comma-separated list of image URLs for the gallery  e.g.  https://cdn.x.com/1.jpg, https://cdn.x.com/2.jpg'],
           ['Package fields (LPA)', 'Enter numeric value in Lakhs Per Annum  e.g. 12.5  (not 12.5 LPA)'],
           ['Fee fields (₹/yr)', 'Enter numeric value in Rupees per year  e.g. 200000  (not 2 Lakh)'],
         ],
@@ -664,6 +667,7 @@ class ImportExportService {
       shortName:         get('short name','shortname','abbreviation'),
       logoUrl:           get('logo url','logourl','logo','college logo','logo url (png/jpg/webp)','logo_url','logo-url','college logo url','image url','logo link'),
       coverImageUrl:     get('cover image url','coverimagelurl','cover image','hero image url','banner url','cover url','coverimageurl'),
+      galleryImages:     toArr(get('gallery image urls','gallery images','galleryimages','gallery','gallery urls','gallery image url')).filter(u => u.startsWith('http')),
       description:       get('description','about','overview') || '',
       establishmentYear: toNum(get('established year','establishedyear','year established','founded')),
 

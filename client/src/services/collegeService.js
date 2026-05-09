@@ -10,9 +10,7 @@ export const collegeService = {
   uploadLogo: (id, file) => {
     const form = new FormData();
     form.append('logo', file);
-    return api.patch(`/colleges/${id}/logo`, form, {
-      headers: { 'Content-Type': undefined },
-    });
+    return api.patch(`/colleges/${id}/logo`, form);
   },
 
 
@@ -40,24 +38,16 @@ export const collegeService = {
   // Delete college (admin)
   deleteCollege: (id) => api.delete(`/colleges/${id}`),
 
-  // Upload college logo (admin) — formData with field 'logo'
-  uploadCollegeLogo: (id, formData) =>
-    api.patch(`/colleges/${id}/logo`, formData, { headers: { 'Content-Type': undefined } }),
-  
   uploadCoverImage: (id, file) => {
     const formData = new FormData();
     formData.append('coverImage', file);
-    return api.patch(`/colleges/${id}/cover-image`, formData, {
-      headers: { 'Content-Type': undefined },
-    });
+    return api.patch(`/colleges/${id}/cover-image`, formData);
   },
 
   uploadGalleryImages: (id, files) => {
     const formData = new FormData();
     files.forEach(file => formData.append('galleryImages', file));
-    return api.patch(`/colleges/${id}/gallery`, formData, {
-      headers: { 'Content-Type': undefined },
-    });
+    return api.patch(`/colleges/${id}/gallery`, formData);
   },
 
 };
