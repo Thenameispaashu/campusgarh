@@ -273,8 +273,8 @@ useEffect(() => {
     <div className={styles.container}>
       <Link to="/dashboard/admin" className={styles.backLink}>← Back to Dashboard</Link>
       <div className={styles.header}>
-        <h1>Add New College</h1>
-        <p>Fill in the details to add a college to the platform</p>
+        <h1>{isEditing ? 'Edit College' : 'Add New College'}</h1>
+        <p>{isEditing ? 'Update the college details below' : 'Fill in the details to add a college to the platform'}</p>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -644,7 +644,9 @@ useEffect(() => {
 
         <div className={styles.actions}>
           <button type="submit" className={styles.submitBtn} disabled={mutation.isPending}>
-            {mutation.isPending ? 'Creating...' : 'Create College'}
+            {mutation.isPending
+              ? (isEditing ? 'Updating...' : 'Creating...')
+              : (isEditing ? 'Update College' : 'Create College')}
           </button>
           <Link to="/dashboard/admin" className={styles.cancelLink}>Cancel</Link>
         </div>
