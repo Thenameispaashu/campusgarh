@@ -59,6 +59,9 @@ export const FUNDING_TYPES = [
   'Public-Private Partnership', 'Deemed University',
   'Private University', 'Central University', 'State University',
   'Autonomous', 'Minority Institution',
+  'Autonomous College', 'National Institute', 'National Law University',
+  'Institute of National Importance', 'Deemed to be University',
+  'Open University', 'Agricultural University',
 ];
 
 // NAAC Grades
