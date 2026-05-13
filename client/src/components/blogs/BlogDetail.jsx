@@ -315,11 +315,11 @@ const BlogDetail = () => {
         </div>
       </div>
       {similarBlogs.length > 0 && (
-      <div style={{ maxWidth: '1100px', margin: '3rem auto', padding: '0 2rem' }}>
+      <div style={{ maxWidth: '1100px', margin: '3rem auto', padding: '0 1rem' }}>
         <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.5rem', color: '#1C1C1E' }}>
           You May Also Like
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1.25rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1.25rem' }}>
           {similarBlogs.map(b => <BlogCard key={b._id} blog={b} />)}
         </div>
       </div>
