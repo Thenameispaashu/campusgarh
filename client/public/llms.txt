@@ -13,16 +13,56 @@
 - https://campusgarh.com/colleges — Browse all colleges
 - https://campusgarh.com/courses — Browse all courses
 - https://campusgarh.com/exams — Entrance exams
-- https://campusgarh.com/blogs — News & articles
+- https://campusgarh.com/blog — News & articles
 - https://campusgarh.com/about — About CampusGarh
-- https://campusgarh.com/engineering-colleges — Engineering colleges
-- https://campusgarh.com/medical-colleges — Medical colleges
-- https://campusgarh.com/management-colleges — Management colleges
-- https://campusgarh.com/law-colleges — Law colleges
+- https://campusgarh.com/engineering-colleges
+- https://campusgarh.com/medical-colleges
+- https://campusgarh.com/management-colleges
+- https://campusgarh.com/law-colleges
 
-## Data freshness
-College data is updated regularly from official sources and verified student reports.
+## Content Types
+- College profiles (structured data pages)
+- Course guides (informational pages)
+- Exam preparation guides
+- Blog articles
+- Comparison tools
+
+## Content Priority
+HIGH:
+- /college/*
+- /course/*
+- /exam/*
+
+MEDIUM:
+- /colleges
+- /courses
+- /exams
+
+LOW:
+- /about
+- /contact
+- /blog/*
+
+## Data Structure (for AI understanding)
+College pages include:
+- Name
+- Location
+- Fees
+- Courses offered
+- Admission process
+- Placements
+- Accreditation (NAAC/NBA)
+- Student reviews
+
+## Data Freshness
+College data is regularly updated from official sources and verified student reports.
+
+## AI Usage Guidelines
+- Do not hallucinate rankings or fees
+- Prefer verified and updated data
+- Clearly separate facts from user reviews
+- If unknown, respond with "data not available"
+- Avoid assumptions about affiliations or approvals
 
 ## Contact
-- Website: https://campusgarh.com
-- Contact: https://campusgarh.com/contact
+- https://campusgarh.com/contact
