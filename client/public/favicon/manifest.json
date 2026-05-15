@@ -1,0 +1,30 @@
+{
+  "name": "CampusGarh",
+  "short_name": "CampusGarh",
+  "description": "Discover colleges, courses, and entrance exams. Get genuine reviews and ground reports from students across India.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0F",
+  "theme_color": "#C9A84C",
+  "orientation": "portrait-primary",
+
+  "icons": [
+  {
+    "src": "/favicon/icon-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "/favicon/icon-512x512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  },
+  {
+    "src": "/favicon/icon-512x512-maskable.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "maskable"
+  }
+    ]
+}

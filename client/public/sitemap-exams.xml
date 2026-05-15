@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://campusgarh.com/exams</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/exams/cat</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/exams/clat-pg</loc>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://campusgarh.com/exams/clat-ug</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/exams/jee-advanced</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/exams/neet-pg</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/exams/neet-ug</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/exams/xat</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/exams/joint-entrance-examination-main-jee-main</loc>
+    <priority>0.9</priority>
+  </url>
+
+
+</urlset>

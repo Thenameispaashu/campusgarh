@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+ 
+  <!-- CORE PAGES -->
+
+  <url>
+    <loc>https://campusgarh.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/about</loc>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/contact</loc>
+    <priority>0.4</priority>
+  </url>
+
+ 
+  <!-- BLOG -->
+ 
+
+  <url>
+    <loc>https://campusgarh.com/blogs</loc>
+    <priority>0.7</priority>
+  </url>
+
+ 
+  <!-- TOOLS -->
+ 
+
+  <url>
+    <loc>https://campusgarh.com/compare</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/predictor</loc>
+    <priority>0.8</priority>
+  </url>
+
+ 
+  <!-- BUSINESS PAGES -->
+ 
+
+  <url>
+    <loc>https://campusgarh.com/partner</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/advertise</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/careers</loc>
+    <priority>0.5</priority>
+  </url>
+
+ 
+  <!-- LEGAL PAGES -->
+ 
+
+  <url>
+    <loc>https://campusgarh.com/privacy-policy</loc>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/terms-and-conditions</loc>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>
