@@ -163,7 +163,7 @@ export default function CollegeDetail() {
       <SEOHead
         title={college?.name}
         description={`${college?.name} — fees, placements, reviews, and admission details. ${college?.contact?.city}, ${college?.contact?.state}.`}
-        keywords={`${college?.name}, ${college?.contact?.city} colleges, ${college?.collegeType}, admission 2025`}
+        keywords={`${college?.name}, ${college?.contact?.city} colleges, ${college?.collegeType}, admission 2026`}
         canonical={`https://campusgarh.com/colleges/${college?.slug}`}
         image={college?.logoUrl}
         favicon={college?.logoUrl}
