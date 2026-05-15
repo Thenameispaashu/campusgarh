@@ -15,25 +15,24 @@ const AD_OPTIONS = [
     icon: <FaBullseye />,
     title: 'Featured College Listing',
     desc: 'Get your college featured prominently on search results, comparison pages, and category listings. Reach students actively searching for your institution.',
-    price: 'Starting ₹15,000/mo',
   },
   {
     icon: <FaChartLine />,
     title: 'Banner & Display Ads',
     desc: 'Place targeted banner ads across college listing pages, exam pages, and the home page. High visibility for maximum brand reach.',
-    price: 'Starting ₹8,000/mo',
+   
   },
   {
     icon: <FaStar />,
     title: 'Sponsored Content',
     desc: 'Publish articles, guides, or rankings featuring your institution. Blends naturally with editorial content — high trust, high engagement.',
-    price: 'Starting ₹20,000/article',
+    
   },
   {
     icon: <FaUsers />,
     title: 'Lead Generation',
     desc: 'Receive qualified student enquiries directly in your CRM. Pay-per-lead model available. All leads are pre-screened for relevance.',
-    price: 'Pay-per-lead',
+  
   },
 ];
 
