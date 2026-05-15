@@ -7,7 +7,7 @@ import styles from './MainLayout.module.css';
 const MainLayout = () => {
   return (
     <>
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="index, follow" />
 
     <div className={styles.layout}>
       <Navbar />
