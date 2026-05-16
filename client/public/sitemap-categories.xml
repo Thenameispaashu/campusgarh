@@ -20,5 +20,10 @@
     <loc>https://campusgarh.com/law-colleges</loc>
     <priority>0.8</priority>
   </url>
+  
+  <url>
+    <loc>https://campusgarh.com/Top-colleges-in-india</loc>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>
