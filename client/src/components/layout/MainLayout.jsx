@@ -6,12 +6,6 @@ import styles from './MainLayout.module.css';
 
 const MainLayout = () => {
   return (
-    <>
-<<<<<<< HEAD
-    <meta name="robots" content="index, follow" />
-
-=======
->>>>>>> 1263476 (Fix: pin numpy<2.0 for prophet compatibility)
     <div className={styles.layout}>
       <Navbar />
       <main className={styles.main}>
@@ -19,7 +13,6 @@ const MainLayout = () => {
       </main>
       <Footer />
     </div>
-    </>
   );
 };
 
