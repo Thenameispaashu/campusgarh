@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEOHead from '../components/common/SEOHead';
 import {
   FaSearch, FaGraduationCap, FaHandshake, FaLightbulb, FaShieldAlt,
   FaLinkedinIn, FaInstagram,
@@ -137,6 +138,12 @@ const About = () => {
 
   return (
     <div className={styles.page}>
+      <SEOHead
+        title="About Us — India's Most Trusted Student Platform"
+        description="Learn how CampusGarh is helping 5 lakh+ students every month discover the right college, compare courses, and get personalised admission guidance across India."
+        canonical="https://campusgarh.com/about"
+        keywords="about CampusGarh, India college discovery platform, admission guidance, student counseling"
+      />
 
       {/* ── HERO ── */}
       <section className={styles.hero}>

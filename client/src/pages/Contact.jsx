@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import SEOHead from '../components/common/SEOHead';
 import { useCreateEnquiry } from '../hooks/queries';
 import { FaPhone, FaEnvelope, FaClock, FaGraduationCap, FaCheckCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -53,6 +54,12 @@ const Contact = () => {
 
   return (
     <div className={styles.page}>
+      <SEOHead
+        title="Contact Us — Get Free Admission Guidance"
+        description="Have questions about college admissions? Contact CampusGarh for free personalised guidance from expert counselors. Call, email, or fill our enquiry form — we respond within 24 hours."
+        canonical="https://campusgarh.com/contact"
+        keywords="contact CampusGarh, college admission help, free counseling, admission enquiry"
+      />
 
       {/* ── HERO ── */}
       <section className={styles.hero}>

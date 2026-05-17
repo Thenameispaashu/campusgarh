@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import SEOHead from '../components/common/SEOHead';
 import styles from './NotFound.module.css';
 
 const SUGGESTIONS = [
@@ -24,6 +25,7 @@ export default function NotFound() {
 
   return (
     <div className={styles.page}>
+      <SEOHead title="404 — Page Not Found" noindex={true} />
 
       {/* ── Ambient glow blobs ── */}
       <div className={styles.blob1} />

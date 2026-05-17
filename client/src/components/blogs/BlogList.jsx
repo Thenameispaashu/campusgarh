@@ -5,6 +5,7 @@ import BlogCard from './BlogCard';
 import BlogFilters from './BlogFilters';
 import Loader from '../common/Loader/Loader';
 import Button from '../common/Button/Button';
+import SEOHead from '../common/SEOHead';
 import styles from './BlogList.module.css';
 
 const BlogList = () => {
@@ -66,8 +67,18 @@ const BlogList = () => {
   const categories = categoriesData?.data?.data || [];
   const { pages, currentPage = page } = pagination;
 
+  const seoTitle = filters.contentType
+    ? `${filters.contentType} — College News & Guides`
+    : 'College News, Articles & Admission Guides';
+
   return (
     <>
+      <SEOHead
+        title={seoTitle}
+        description="Read the latest college news, admission guides, exam updates, and student success stories. Expert insights to help you make better education decisions."
+        canonical="https://campusgarh.com/news"
+        keywords="college news India, admission guides, exam updates, education articles"
+      />
       <div className={styles.hero}>
         <p className={styles.heroEyebrow}>Knowledge Hub</p>
         <h1 className={styles.heroTitle}>News &amp; <span>Articles</span></h1>

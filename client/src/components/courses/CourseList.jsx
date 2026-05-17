@@ -5,6 +5,7 @@ import { useCourses } from '../../hooks/queries';
 import CourseCard from './CourseCard';
 import CourseFilters from './CourseFilters';
 import Loader from '../common/Loader/Loader';
+import SEOHead from '../common/SEOHead';
 import styles from './CourseList.module.css';
 
 const CourseList = ({ defaultCategory = '', pageTitle = 'Courses in India', pageH1 = null }) => {
@@ -50,8 +51,18 @@ const CourseList = ({ defaultCategory = '', pageTitle = 'Courses in India', page
   const { total, pages } = pagination;
   const currentPage = pagination.page || page;
 
+  const seoTitle = filters.discipline
+    ? `${filters.discipline} Courses in India`
+    : (pageTitle || 'Courses in India');
+
   return (
     <div className={styles.pageWrapper}>
+      <SEOHead
+        title={seoTitle}
+        description={`Explore ${filters.discipline ? filters.discipline + ' ' : ''}courses in India. Compare fees, eligibility, career scope, and top colleges offering each programme.`}
+        canonical={`https://campusgarh.com/courses${filters.category ? `?category=${encodeURIComponent(filters.category)}` : ''}`}
+        keywords={`${filters.discipline ? filters.discipline + ' ' : ''}courses India, UG PG courses, college programmes`}
+      />
       <section className={styles.pageBanner}>
         <div className={styles.bannerInner}>
           <p className={styles.bannerEyebrow}>UG · PG · Diploma · Doctorate</p>

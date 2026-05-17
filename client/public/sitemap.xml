@@ -4,37 +4,37 @@
   <!-- STATIC PAGES -->
   <sitemap>
     <loc>https://campusgarh.com/sitemap-static.xml</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-17</lastmod>
   </sitemap>
 
   <!-- COLLEGES -->
   <sitemap>
     <loc>https://campusgarh.com/sitemap-colleges.xml</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-17</lastmod>
   </sitemap>
 
   <!-- COURSES -->
   <sitemap>
     <loc>https://campusgarh.com/sitemap-courses.xml</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-17</lastmod>
   </sitemap>
 
   <!-- EXAMS -->
   <sitemap>
     <loc>https://campusgarh.com/sitemap-exams.xml</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-17</lastmod>
   </sitemap>
 
   <!-- BLOGS -->
   <sitemap>
     <loc>https://campusgarh.com/sitemap-blogs.xml</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-17</lastmod>
   </sitemap>
 
   <!-- CATEGORY / LANDING PAGES -->
   <sitemap>
     <loc>https://campusgarh.com/sitemap-categories.xml</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-17</lastmod>
   </sitemap>
 
 </sitemapindex>

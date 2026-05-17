@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './StaticPage.module.css';
+import SEOHead from '../components/common/SEOHead';
 
 const SECTIONS = [
   {
@@ -108,6 +109,11 @@ const TermsAndConditions = () => {
   const [open, setOpen] = useState(null);
   return (
     <div className={styles.page}>
+      <SEOHead
+        title="Terms and Conditions"
+        description="Read CampusGarh's terms and conditions that govern your use of our platform. By using CampusGarh you agree to these terms."
+        canonical="https://campusgarh.com/terms-and-conditions"
+      />
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Legal</p>

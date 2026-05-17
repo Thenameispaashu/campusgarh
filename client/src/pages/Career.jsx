@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaLaptopCode, FaBullhorn, FaUserGraduate, FaChartBar, FaPen, FaHandshake } from 'react-icons/fa';
+import SEOHead from '../components/common/SEOHead';
 import styles from './Career.module.css';
 
 const PERKS = [
@@ -54,6 +55,12 @@ const Career = () => {
 
   return (
     <div className={styles.page}>
+      <SEOHead
+        title="Careers at CampusGarh — Join Our Mission"
+        description="Join the team building India's most trusted college discovery platform. Explore open roles in engineering, content, marketing, and counseling at CampusGarh."
+        canonical="https://campusgarh.com/careers"
+        keywords="CampusGarh jobs, careers at CampusGarh, edtech jobs India, college platform hiring"
+      />
 
       {/* ── HERO ── */}
       <section className={styles.hero}>

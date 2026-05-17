@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './StaticPage.module.css';
+import SEOHead from '../components/common/SEOHead';
 
 const SECTIONS = [
   {
@@ -90,6 +91,12 @@ const PrivacyPolicy = () => {
   const [open, setOpen] = useState(null);
   return (
     <div className={styles.page}>
+      <SEOHead
+        title="Privacy Policy"
+        description="Read CampusGarh's privacy policy to understand how we collect, use, and protect your personal data. Your privacy is important to us."
+        canonical="https://campusgarh.com/privacy-policy"
+        noindex={false}
+      />
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Legal</p>

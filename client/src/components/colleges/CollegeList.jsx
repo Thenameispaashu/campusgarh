@@ -5,6 +5,7 @@ import { useColleges } from '../../hooks/queries';
 import CollegeCard from './CollegeCard';
 import CollegeFilters from './CollegeFilters';
 import Loader from '../common/Loader/Loader';
+import SEOHead from '../common/SEOHead';
 import styles from './CollegeList.module.css';
 
 const CollegeList = ({ defaultType = '', pageTitle = 'Colleges in India', pageH1 = null }) => {
@@ -62,8 +63,18 @@ const CollegeList = ({ defaultType = '', pageTitle = 'Colleges in India', pageH1
   const { data: colleges = [], pagination = {} } = data?.data?.data || {};
   const { total, pages, currentPage = page, limit } = pagination;
 
+  const seoTitle = filters.type
+    ? `${filters.type} Colleges in India`
+    : (pageTitle || 'Colleges in India');
+
   return (
     <div className={styles.pageWrapper}>
+      <SEOHead
+        title={seoTitle}
+        description={`Browse ${filters.type ? filters.type + ' ' : ''}colleges in India. Compare fees, placements, rankings, and student reviews. Find the right college for you on CampusGarh.`}
+        canonical={`https://campusgarh.com/colleges${filters.type ? `?type=${encodeURIComponent(filters.type)}` : ''}`}
+        keywords={`${filters.type ? filters.type + ' ' : ''}colleges in India, top colleges, college admission`}
+      />
       <section className={styles.pageBanner}>
         <div className={styles.bannerInner}>
           <p className={styles.bannerEyebrow}>Discover &amp; Compare</p>

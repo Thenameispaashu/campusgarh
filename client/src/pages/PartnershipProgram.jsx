@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHandshake, FaRupeeSign, FaUserGraduate, FaChartLine, FaBolt, FaCheckCircle } from 'react-icons/fa';
+import SEOHead from '../components/common/SEOHead';
 import { partnerService } from '../services/partnerService';
 import styles from './PartnershipProgram.module.css';
 
@@ -41,6 +42,12 @@ export default function PartnershipProgram() {
 
   return (
     <div className={styles.page}>
+      <SEOHead
+        title="Partner Program — Earn by Helping Students"
+        description="Join CampusGarh's partner program and earn commission for every student admission you facilitate. Free to join, real-time dashboard, 500+ colleges to refer."
+        canonical="https://campusgarh.com/partner"
+        keywords="CampusGarh partner program, earn commission admission, education affiliate India"
+      />
 
       {/* Hero */}
       <section className={styles.hero}>

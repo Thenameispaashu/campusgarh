@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaUsers, FaChartLine, FaBullseye, FaStar, FaCheckCircle } from 'react-icons/fa';
+import SEOHead from '../components/common/SEOHead';
 import { Link } from 'react-router-dom';
 import styles from './AdvertiseWithUs.module.css';
 
@@ -55,6 +56,12 @@ const AdvertiseWithUs = () => {
 
   return (
     <div className={styles.page}>
+      <SEOHead
+        title="Advertise With Us — Reach 5 Lakh+ Students"
+        description="Promote your college or brand to 5 lakh+ students actively making education decisions. Featured listings, banner ads, sponsored content, and lead generation on CampusGarh."
+        canonical="https://campusgarh.com/advertise"
+        keywords="advertise on CampusGarh, college advertising India, student marketing, education leads"
+      />
 
       {/* ── HERO ── */}
       <section className={styles.hero}>

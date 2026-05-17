@@ -6,6 +6,7 @@ import ExamCard from './ExamCard';
 import ExamFilters from './ExamFilters';
 import Loader from '../common/Loader/Loader';
 import Pagination from '../common/Pagination/Pagination';
+import SEOHead from '../common/SEOHead';
 import styles from './ExamList.module.css';
 import { FaSort } from 'react-icons/fa';
 
@@ -59,8 +60,18 @@ const ExamList = () => {
     ['category', 'examLevel', 'examMode', 'conductingBody', 'upcoming'].includes(key) && val
   ).length;
 
+  const seoTitle = filters.category
+    ? `${filters.category} Entrance Exams 2025`
+    : 'Entrance Exams 2025 — Dates, Eligibility & Results';
+
   return (
     <div className={styles.pageWrapper}>
+      <SEOHead
+        title={seoTitle}
+        description={`Track ${filters.category ? filters.category + ' ' : ''}entrance exams in India. Get exam dates, eligibility criteria, syllabus, and accepting colleges for every national and state-level exam.`}
+        canonical={`https://campusgarh.com/exams${filters.category ? `?category=${encodeURIComponent(filters.category)}` : ''}`}
+        keywords={`${filters.category ? filters.category + ' ' : ''}entrance exams 2025, exam dates, eligibility criteria`}
+      />
       <section className={styles.pageBanner}>
         <div className={styles.bannerInner}>
           <p className={styles.bannerEyebrow}>Dates · Eligibility · Colleges</p>

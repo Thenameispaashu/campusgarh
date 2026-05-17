@@ -1,77 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
- 
-  <!-- CORE PAGES -->
-
+  <!-- CORE -->
   <url>
     <loc>https://campusgarh.com/</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://campusgarh.com/about</loc>
-    <priority>0.4</priority>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://campusgarh.com/contact</loc>
-    <priority>0.4</priority>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
- 
-  <!-- BLOG -->
- 
+  <!-- LISTING PAGES -->
+  <url>
+    <loc>https://campusgarh.com/colleges</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <url>
-    <loc>https://campusgarh.com/blogs</loc>
+    <loc>https://campusgarh.com/courses</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/exams</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/news</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- COLLEGE TYPE LANDING PAGES -->
+  <url>
+    <loc>https://campusgarh.com/engineering-colleges</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/medical-colleges</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/management-colleges</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/law-colleges</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
- 
-  <!-- TOOLS -->
- 
+  <url>
+    <loc>https://campusgarh.com/arts-colleges</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
+  <url>
+    <loc>https://campusgarh.com/science-colleges</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- COURSE LEVEL PAGES -->
+  <url>
+    <loc>https://campusgarh.com/courses/ug</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/courses/pg</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://campusgarh.com/courses/diploma</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- TOOLS -->
   <url>
     <loc>https://campusgarh.com/compare</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://campusgarh.com/predictor</loc>
-    <priority>0.8</priority>
-  </url>
-
- 
   <!-- BUSINESS PAGES -->
- 
-
   <url>
     <loc>https://campusgarh.com/partner</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://campusgarh.com/advertise</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://campusgarh.com/careers</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
- 
-  <!-- LEGAL PAGES -->
- 
-
+  <!-- LEGAL -->
   <url>
     <loc>https://campusgarh.com/privacy-policy</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
 
   <url>
     <loc>https://campusgarh.com/terms-and-conditions</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
 

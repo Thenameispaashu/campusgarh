@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import SEOHead from '../components/common/SEOHead';
 import { useColleges, useCourses } from '../hooks/queries';
 import CollegeCard from '../components/colleges/CollegeCard';
 import CourseCard from '../components/courses/CourseCard';
@@ -47,6 +48,10 @@ const SearchResults = () => {
 
   return (
     <div className={styles.container}>
+      <SEOHead
+        title={rawQuery ? `Search: ${rawQuery}` : 'Search Results'}
+        noindex={true}
+      />
       <h1 className={styles.title}>Results for "{rawQuery}"</h1>
 
       {/* Intent summary chips */}
