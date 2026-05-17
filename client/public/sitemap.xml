@@ -1,40 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- STATIC PAGES -->
+  <!-- Static pages — served directly from Apache -->
   <sitemap>
     <loc>https://campusgarh.com/sitemap-static.xml</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
   </sitemap>
 
-  <!-- COLLEGES -->
+  <!-- Dynamic sitemaps — generated live from database via API server -->
   <sitemap>
-    <loc>https://campusgarh.com/sitemap-colleges.xml</loc>
-    <lastmod>2026-05-17</lastmod>
+    <loc>https://campusgarh-252666950431.asia-south2.run.app/sitemap-colleges.xml</loc>
+    <lastmod>2026-05-18</lastmod>
   </sitemap>
 
-  <!-- COURSES -->
   <sitemap>
-    <loc>https://campusgarh.com/sitemap-courses.xml</loc>
-    <lastmod>2026-05-17</lastmod>
+    <loc>https://campusgarh-252666950431.asia-south2.run.app/sitemap-courses.xml</loc>
+    <lastmod>2026-05-18</lastmod>
   </sitemap>
 
-  <!-- EXAMS -->
   <sitemap>
-    <loc>https://campusgarh.com/sitemap-exams.xml</loc>
-    <lastmod>2026-05-17</lastmod>
+    <loc>https://campusgarh-252666950431.asia-south2.run.app/sitemap-exams.xml</loc>
+    <lastmod>2026-05-18</lastmod>
   </sitemap>
 
-  <!-- BLOGS -->
   <sitemap>
-    <loc>https://campusgarh.com/sitemap-blogs.xml</loc>
-    <lastmod>2026-05-17</lastmod>
-  </sitemap>
-
-  <!-- CATEGORY / LANDING PAGES -->
-  <sitemap>
-    <loc>https://campusgarh.com/sitemap-categories.xml</loc>
-    <lastmod>2026-05-17</lastmod>
+    <loc>https://campusgarh-252666950431.asia-south2.run.app/sitemap-blogs.xml</loc>
+    <lastmod>2026-05-18</lastmod>
   </sitemap>
 
 </sitemapindex>

@@ -144,6 +144,7 @@ app.get('/sitemap-static.xml', (req, res) => {
     { path: '/colleges',             changefreq: 'daily',   priority: '0.9' },
     { path: '/courses',              changefreq: 'weekly',  priority: '0.8' },
     { path: '/exams',                changefreq: 'weekly',  priority: '0.8' },
+    { path: '/news',                 changefreq: 'daily',   priority: '0.9' },
     { path: '/blogs',                changefreq: 'daily',   priority: '0.8' },
     { path: '/compare',              changefreq: 'monthly', priority: '0.6' },
     { path: '/about',                changefreq: 'monthly', priority: '0.7' },
@@ -173,12 +174,12 @@ app.get('/sitemap-static.xml', (req, res) => {
   res.send(wrapUrlset(pages.map(p => urlTag(`${BASE}${p.path}`, now, p.changefreq, p.priority))));
 });
 
-// Colleges sitemap
+// Colleges sitemap — College model has no isActive field, fetch all with a slug
 app.get('/sitemap-colleges.xml', async (req, res) => {
   try {
     const BASE = SITE_URL();
     const now = new Date().toISOString();
-    const colleges = await College.find({ isActive: true }, 'slug updatedAt').lean();
+    const colleges = await College.find({ slug: { $exists: true, $ne: null } }, 'slug updatedAt').lean();
     res.header('Content-Type', 'application/xml');
     res.send(wrapUrlset(colleges.map(c => urlTag(`${BASE}/colleges/${c.slug}`, c.updatedAt ? new Date(c.updatedAt).toISOString() : now, 'weekly', '0.8'))));
   } catch { res.status(500).json({ message: 'Failed' }); }
@@ -274,6 +275,47 @@ app.get('/og/news/:slug', async (req, res) => {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'public, s-maxage=3600, max-age=3600');
     return res.send(buildOgHtml({ title, desc, image, url, type: 'article' }));
+  } catch { res.redirect(process.env.CLIENT_URL); }
+});
+
+// /og/blog/:slug — alias for /og/news/:slug (both /news and /blogs routes exist on frontend)
+app.get('/og/blog/:slug', async (req, res) => {
+  try {
+    const blog = await Blog.findOne({ slug: req.params.slug }).select('title excerpt featuredImageUrl slug');
+    if (!blog) return res.redirect(process.env.CLIENT_URL);
+    const title = blog.title;
+    const desc = (blog.excerpt || '').substring(0, 200).trim();
+    const image = blog.featuredImageUrl || '';
+    const url = `${process.env.CLIENT_URL}/news/${blog.slug}`;
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, s-maxage=3600, max-age=3600');
+    return res.send(buildOgHtml({ title, desc, image, url, type: 'article' }));
+  } catch { res.redirect(process.env.CLIENT_URL); }
+});
+
+app.get('/og/course/:slug', async (req, res) => {
+  try {
+    const course = await Course.findOne({ slug: req.params.slug }).select('name description slug');
+    if (!course) return res.redirect(process.env.CLIENT_URL);
+    const title = course.name;
+    const desc = (course.description || '').substring(0, 200).replace(/[#*_`[\]]/g, '').trim();
+    const url = `${process.env.CLIENT_URL}/courses/${course.slug}`;
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, s-maxage=3600, max-age=3600');
+    return res.send(buildOgHtml({ title, desc, image: '', url, type: 'website' }));
+  } catch { res.redirect(process.env.CLIENT_URL); }
+});
+
+app.get('/og/exam/:slug', async (req, res) => {
+  try {
+    const exam = await Exam.findOne({ slug: req.params.slug }).select('name overview slug');
+    if (!exam) return res.redirect(process.env.CLIENT_URL);
+    const title = exam.name;
+    const desc = (exam.overview || '').substring(0, 200).replace(/[#*_`[\]]/g, '').trim();
+    const url = `${process.env.CLIENT_URL}/exams/${exam.slug}`;
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, s-maxage=3600, max-age=3600');
+    return res.send(buildOgHtml({ title, desc, image: '', url, type: 'website' }));
   } catch { res.redirect(process.env.CLIENT_URL); }
 });
 

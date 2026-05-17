@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { useBlogs, useBlogCategories } from '../../hooks/queries';
 import BlogCard from './BlogCard';
 import BlogFilters from './BlogFilters';
@@ -9,6 +9,7 @@ import SEOHead from '../common/SEOHead';
 import styles from './BlogList.module.css';
 
 const BlogList = () => {
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filterOpen, setFilterOpen] = useState(false);
   const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1);
@@ -76,7 +77,7 @@ const BlogList = () => {
       <SEOHead
         title={seoTitle}
         description="Read the latest college news, admission guides, exam updates, and student success stories. Expert insights to help you make better education decisions."
-        canonical="https://campusgarh.com/news"
+        canonical={`https://campusgarh.com/news${filters.contentType ? `?contentType=${encodeURIComponent(filters.contentType)}` : ''}`}
         keywords="college news India, admission guides, exam updates, education articles"
       />
       <div className={styles.hero}>
