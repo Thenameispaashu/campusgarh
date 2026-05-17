@@ -40,7 +40,7 @@ const TopOnlineUniversities = () => {
         <motion.div className={styles.header} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <div>
             <p className={styles.eyebrow}>Learn From Anywhere</p>
-            <h2 className={styles.heading}>Top Online <span>Universities</span></h2>
+            <h3 className={styles.heading}>Top Online <span>Universities</span></h3>
             <p className={styles.sub}>Accredited online degrees from India's leading universities.</p>
           </div>
           <Link to="/colleges?mode=online" className={styles.viewAll}>View All →</Link>

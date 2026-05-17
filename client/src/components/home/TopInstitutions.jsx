@@ -58,7 +58,7 @@ const TopInstitutions = () => {
         <motion.div className={styles.header} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <div>
             <p className={styles.eyebrow}>Admin Curated</p>
-            <h2 className={styles.heading}>Top <span>Institutions</span></h2>
+            <h3 className={styles.heading}>Top <span>Institutions</span></h3>
           </div>
           <Link to="/colleges" className={styles.viewAll}>View All →</Link>
         </motion.div>

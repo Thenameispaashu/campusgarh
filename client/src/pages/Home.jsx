@@ -408,7 +408,7 @@ export default function Home() {
           >
             <div>
               <p className={styles.sectionLabel}>Why Choose Us</p>
-              <h2 className={styles.sectionTitle}>Built for <span>Students</span></h2>
+              <h3 className={styles.sectionTitle}>Built for <span>Students</span></h3>
             </div>
           </motion.div>
           <motion.div
@@ -442,7 +442,7 @@ export default function Home() {
           >
             <div>
               <p className={styles.sectionLabel}>Knowledge Hub</p>
-              <h2 className={styles.sectionTitle}>Insights &amp; <span>Guides</span></h2>
+              <h3 className={styles.sectionTitle}>Insights &amp; <span>Guides</span></h3>
               <p className={styles.blogsSub}>
                 Expert articles on admissions, rankings, career paths, and everything in between.
               </p>
@@ -540,7 +540,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }} variants={fadeUp}
           >
             <p className={styles.ctaEyebrow}>Start Today — It's Free</p>
-            <h2 className={styles.ctaTitle}>Ready to begin your journey?</h2>
+            <h3 className={styles.ctaTitle}>Ready to begin your journey?</h3>
             <p className={styles.ctaText}>
               Join 25,000+ students making informed decisions about their future.
             </p>

@@ -55,7 +55,7 @@ const LeadCapturePopup = () => {
         {step === 'prompt' && (
           <div className={styles.promptBody}>
             <div className={styles.iconWrap}><FaGraduationCap /></div>
-            <h2 className={styles.title}>Find Your Perfect College</h2>
+            <h3 className={styles.title}>Find Your Perfect College</h3>
             <p className={styles.sub}>Get free personalised counselling from our experts — no spam, ever.</p>
             <div className={styles.promptBtns}>
               <button className={styles.btnPrimary} onClick={() => setStep('form')}>Get Free Counselling</button>
@@ -67,7 +67,7 @@ const LeadCapturePopup = () => {
 
         {step === 'form' && (
           <div className={styles.formBody}>
-            <h2 className={styles.title}>Quick Enquiry</h2>
+            <h3 className={styles.title}>Quick Enquiry</h3>
             <p className={styles.sub}>Fill in your details and we'll call you within 24 hours.</p>
             {errMsg && <div className={styles.errorMsg}>{errMsg}</div>}
             <form onSubmit={handleSubmit} className={styles.form}>
@@ -85,7 +85,7 @@ const LeadCapturePopup = () => {
         {step === 'success' && (
           <div className={styles.successBody}>
             <div className={styles.successIcon}>✓</div>
-            <h2 className={styles.title}>You're All Set!</h2>
+            <h3 className={styles.title}>You're All Set!</h3>
             <p className={styles.sub}>Our counsellor will call you within 24 hours. Check your email for confirmation.</p>
             <button className={styles.btnPrimary} onClick={dismiss}>Continue Exploring</button>
           </div>

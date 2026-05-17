@@ -28,7 +28,7 @@ const MeetCounselors = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <p className={styles.eyebrow}>Expert Guidance</p>
-          <h2 className={styles.heading}>Meet Our <span>Counselors</span></h2>
+          <h3 className={styles.heading}>Meet Our <span>Counselors</span></h3>
           <p className={styles.sub}>Real people, real advice — our counselors have helped thousands of students find their path.</p>
         </div>
         <div className={styles.grid}>

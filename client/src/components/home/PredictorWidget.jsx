@@ -14,7 +14,7 @@ const PredictorWidget = () => {
     <section className={styles.section}>
       <div className={styles.inner}>
         <p className={styles.eyebrow}>AI-Powered Guidance</p>
-        <h2 className={styles.title}>Find Your Perfect Fit</h2>
+        <h3 className={styles.title}>Find Your Perfect Fit</h3>
         <p className={styles.subtitle}>
           Enter your score, percentage, or target discipline — get personalised predictions instantly.
         </p>

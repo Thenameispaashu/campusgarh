@@ -8,9 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import './styles/globals.css';
 import App from './App';
 import { HelmetProvider } from 'react-helmet-async';
-// wrap <App /> with <HelmetProvider>
-// import './styles/globals.css'
-// import './styles/responsive.css'   // ← add this line
 
 
 const queryClient = new QueryClient({
@@ -29,13 +26,15 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <App />
-          <ToastContainer position="top-right" autoClose={3000} theme="colored" />
-        </QueryClientProvider>
-      </BrowserRouter>
-    </GoogleOAuthProvider>
+    <HelmetProvider>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+        <BrowserRouter>
+          <QueryClientProvider client={queryClient}>
+            <App />
+            <ToastContainer position="top-right" autoClose={3000} theme="colored" />
+          </QueryClientProvider>
+        </BrowserRouter>
+      </GoogleOAuthProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );

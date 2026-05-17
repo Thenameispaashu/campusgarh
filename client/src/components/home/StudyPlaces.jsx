@@ -100,7 +100,7 @@ const StudyPlaces = () => {
           viewport={{ once: true }} variants={fadeUp}
         >
           <span className={styles.eyebrow}>Explore India</span>
-          <h2 className={styles.title}>Top <em>Study Places</em></h2>
+          <h3 className={styles.title}>Top <em>Study Places</em></h3>
           <p className={styles.subtitle}>Premier education hubs across the country</p>
         </motion.div>
 

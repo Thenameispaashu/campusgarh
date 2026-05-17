@@ -3,55 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="index, follow" />
 
-    <!-- Manifest -->
+    <!-- Default SEO (overridden per-page via react-helmet-async) -->
+    <title>CampusGarh — Find Top Colleges, Courses &amp; Entrance Exams in India</title>
+    <meta name="description" content="Discover 5,000+ colleges, compare courses, and explore entrance exams across India. Read genuine student reviews and ground reports. Get free personalised admission guidance from expert counselors." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://campusgarh.com" />
+
+    <!-- Open Graph defaults -->
+    <meta property="og:site_name" content="CampusGarh" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content="CampusGarh — Find Top Colleges, Courses &amp; Entrance Exams in India" />
+    <meta property="og:description" content="Discover 5,000+ colleges, compare courses, and explore entrance exams across India." />
+    <meta property="og:image" content="https://campusgarh.com/ms-icon-150x150.png" />
+    <meta property="og:url" content="https://campusgarh.com" />
+
+    <!-- Twitter Card defaults -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@campusgarh" />
+    <meta name="twitter:title" content="CampusGarh — Find Top Colleges, Courses &amp; Entrance Exams in India" />
+    <meta name="twitter:description" content="Discover 5,000+ colleges, compare courses, and explore entrance exams across India." />
+    <meta name="twitter:image" content="https://campusgarh.com/ms-icon-150x150.png" />
+
+    <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#C9A84C" />
     <meta name="application-name" content="CampusGarh" />
     <meta name="mobile-web-app-capable" content="yes" />
 
     <!-- Favicon -->
-   
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
-   
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
-    
-    <!-- Theme color -->
-    <meta name="theme-color" content="#C9A84C" />
-    
-    <!-- iOS (ONLY ONE REQUIRED) -->
+
+    <!-- iOS PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="CampusGarh" />
-    
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon-180x180.png" />
-    
+
     <!-- Microsoft Tiles -->
     <meta name="msapplication-TileColor" content="#C9A84C" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
     <meta name="msapplication-square70x70logo"   content="/ms-icon-70x70.png" />
     <meta name="msapplication-square150x150logo" content="/ms-icon-150x150.png" />
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png" />
+
+    <!-- Fonts: preconnect first, then async load via print trick -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet" />
-    
-    
-    <!-- Google tag (gtag.js) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet" /></noscript>
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4G05BL385"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-T4G05BL385');
     </script>
 
-
+    <!-- App-loader styles -->
     <style>
       #app-loader {
         position: fixed;
@@ -65,19 +80,16 @@
         gap: 2rem;
         transition: opacity 0.5s ease, visibility 0.5s ease;
       }
-
       #app-loader.hidden {
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
       }
-
       #app-loader img {
         height: 150px;
         width: auto;
         animation: loaderPulse 1.8s ease-in-out infinite;
       }
-
       #app-loader .loader-bar-track {
         width: 180px;
         height: 2px;
@@ -85,7 +97,6 @@
         border-radius: 99px;
         overflow: hidden;
       }
-
       #app-loader .loader-bar-fill {
         height: 100%;
         width: 0%;
@@ -93,7 +104,6 @@
         border-radius: 99px;
         animation: loaderFill 4.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
-
       #app-loader .loader-text {
         font-family: 'Montserrat', sans-serif;
         font-size: 0.72rem;
@@ -103,12 +113,10 @@
         text-transform: uppercase;
         margin-top: -1rem;
       }
-
       @keyframes loaderPulse {
         0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(0.97); }
+        50%       { opacity: 0.7; transform: scale(0.97); }
       }
-
       @keyframes loaderFill {
         0%   { width: 0%; }
         60%  { width: 75%; }

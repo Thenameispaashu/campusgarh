@@ -37,9 +37,9 @@ export default function TrustedVoices() {
     <section className={styles.section}>
       <div className={styles.header}>
         <p className={styles.label}>Trusted Voices</p>
-        <h2 className={styles.title}>
+        <h3 className={styles.title}>
           <strong>Hear them</strong> out
-        </h2>
+        </h3>
       </div>
 
       <div className={styles.sliderWrapper}>

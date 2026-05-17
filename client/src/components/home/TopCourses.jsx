@@ -20,7 +20,7 @@ const TopCourses = () => {
         <motion.div className={styles.header} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <div>
             <p className={styles.eyebrow}>Admin Curated</p>
-            <h2 className={styles.heading}>Top <span>Courses</span></h2>
+            <h3 className={styles.heading}>Top <span>Courses</span></h3>
             <p className={styles.sub}>Hand-picked programmes across disciplines, updated by our team.</p>
           </div>
           <Link to="/courses" className={styles.viewAll}>View All →</Link>

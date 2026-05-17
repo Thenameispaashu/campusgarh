@@ -82,7 +82,7 @@ const LatestArticles = () => {
         >
           <div>
             <p className={styles.eyebrow}>Knowledge Hub</p>
-            <h2 className={styles.heading}>Latest Articles &amp; <span>Updates</span></h2>
+            <h3 className={styles.heading}>Latest Articles &amp; <span>Updates</span></h3>
             <p className={styles.sub}>Expert insights and admission guidance</p>
           </div>
           <Link to="/news" className={styles.viewAll}>View All →</Link>
